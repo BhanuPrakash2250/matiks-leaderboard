@@ -28,26 +28,25 @@ It was built as part of the **Matiks – Full-Stack Engineer Intern Assignment**
 
 ## 📂 Project Structure
 
+```
 matiks-leaderboard/
 │
 ├── backend/
-│ ├── main.go
-│ ├── handlers/
-│ │ ├── leaderboard.go
-│ │ └── search.go
-│ ├── services/
-│ │ └── leaderboard_service.go
-│ ├── models/
-│ │ └── user.go
-│ ├── seed/
-│ │ └── seed.go
-│ └── static/
-│ └── index.html
+│   ├── main.go
+│   ├── handlers/
+│   │   ├── leaderboard.go
+│   │   └── search.go
+│   ├── services/
+│   │   └── leaderboard_service.go
+│   ├── models/
+│   │   └── user.go
+│   ├── seed/
+│   │   └── seed.go
+│   └── static/
+│       └── index.html
 │
 └── README.md
-
-yaml
-Copy code
+```
 
 ---
 
@@ -62,61 +61,66 @@ Copy code
 ```bash
 cd backend
 go run main.go
+```
+
 You should see:
 
-nginx
-Copy code
+```
 Listening and serving HTTP on :9090
-Open in Browser
-arduino
-Copy code
+```
+
+Open in browser:
+
+```
 http://localhost:9090
-🔍 Usage
-Leaderboard
-Displays Rank | Username | Rating
+```
 
-Uses tie-aware dense ranking
+---
 
-Search
-Type a username (e.g. rahul)
+## 🔍 Usage
 
-Instantly displays:
+### Leaderboard
+- Displays **Rank | Username | Rating**
+- Uses tie-aware **dense ranking**
 
-Global Rank
+### Search
+- Type a username (e.g. **rahul**)
+- Instantly displays **Global Rank, Username, Rating**
 
-Username
+Example Output:
 
-Rating
-
-Example Output
-yaml
-Copy code
+```
 Rank | Username     | Rating
 1    | rahul_3528   | 5004
 2    | rahul_8573   | 5000
 5    | rahul_7105   | 4997
-🧠 Ranking Logic
-Users are sorted by rating in descending order
+```
 
-Dense ranking is applied:
+---
 
-Same rating → same rank
+## 🧠 Ranking Logic
 
-Rank increases only when rating decreases
+Users are sorted by rating in descending order. Dense ranking is applied:
 
-Example
-yaml
-Copy code
+- Same rating → same rank
+- Rank increases only when rating decreases
+
+Example:
+
+```
 Rating 5000 → Rank 1
 Rating 5000 → Rank 1
 Rating 4999 → Rank 3
-📈 Scalability Design
-Current Implementation
-In-memory slice with mutex locking
+```
 
-Efficient and responsive for 10k+ users
+---
 
-Future Enhancements
-Redis Sorted Sets (ZADD, ZRANK) for millions of users
+## 📈 Scalability Design
 
-Stateless backend for horizontal scaling
+### Current Implementation
+- In-memory slice with mutex locking
+- Efficient and responsive for 10k+ users
+
+### Future Enhancements
+- Redis Sorted Sets (ZADD, ZRANK) for millions of users
+- Stateless backend for horizontal scaling
